@@ -22,6 +22,7 @@
            #:binary-slot-value
            #:binary-data-object
            #:binary-data-metaclass
-           #:bit-field-slot-definition))
+           #:bit-field-slot-definition
+           #:write-little-endian-integer))
 
 ;;; END

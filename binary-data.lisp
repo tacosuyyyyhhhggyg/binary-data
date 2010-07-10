@@ -120,12 +120,12 @@
          stream
          (ensure-cdr (closer-mop:slot-definition-type slotd))))
 
-(defmethod write-object ((object closer-mop:standard-object) stream)
+(defmethod write-object ((object standard-object) stream)
   (mapc (lambda (slotd)
           (write-slotd-value object slotd stream))
    (closer-mop:class-slots (class-of object))))
 
-(defmethod read-object ((object closer-mop:standard-object) stream)
+(defmethod read-object ((object standard-object) stream)
   (mapc
    (lambda (slotd)
      (setf (closer-mop:slot-value-using-class (class-of object) object slotd)

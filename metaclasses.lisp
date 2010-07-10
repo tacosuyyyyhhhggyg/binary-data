@@ -74,14 +74,16 @@ modifications so they do the right thing."))
             (nreverse name-dslotds-alist))))
 
 (defclass binary-slot-definition (standard-slot-definition)
-  ())
+  (#+ () (binary-type :reader binary-type :initarg :binary-type
+                :initform (error "No binary type supplied."))))
+
 (defclass binary-direct-slot-definition (standard-direct-slot-definition
                                             binary-slot-definition)
   ())
 
 (defclass binary-effective-slot-definition (standard-effective-slot-definition
                                                binary-slot-definition)
-  ())
+  (#+ () (binary-type :initform 'int8)))
 
 (defmethod direct-slot-definition-class ((class binary-data-metaclass) &key)
   (find-class 'binary-direct-slot-definition))
